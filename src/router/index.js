@@ -15,7 +15,7 @@ const router = new Router({
 		{
 			path: '/',
 			component: Layout,
-			redirect: 'tasks',
+			redirect: 'task',
 			children: [{
 				path: 'task',
 				component: Task
