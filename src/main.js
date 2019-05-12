@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Shell from './components/shell';
+import Shell from './layout';
 import router from './router';
 import store from './store';
 import Vuex from 'vuex';

@@ -1,7 +1,7 @@
 <template>
   <div>
-    
-    <p>bottom is type</p>
+
+    <p>bottom</p>
 
   </div>
 </template>

@@ -10,7 +10,7 @@
 import Top from './top-menu.vue';
 import Bottom from './bottom-menu.vue';
 export default {
-  name: 'layout',
+  name: 'main-layout',
   components: {
     'top-menu': Top,
     'bottom-menu': Bottom

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Layout from '../components/layout';
+import MainLayout from '../layout/main';
+import LoginLayout from '../layout/login';
 import Task from '../components/task';
 import Deal from '../components/deal';
 import Sign from '../components/sign';
@@ -14,7 +15,7 @@ const router = new Router({
 	routes: [
 		{
 			path: '/',
-			component: Layout,
+			component: MainLayout,
 			redirect: 'task',
 			children: [{
 				path: 'task',
@@ -32,6 +33,9 @@ const router = new Router({
 				path: 'deal/detail',
 				component: Detail
 			}]
+		},{
+			path: '/login',
+			component: LoginLayout
 		}
 	],
 	linkActiveClass: 'active',
