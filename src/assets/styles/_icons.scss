@@ -1,0 +1,13 @@
+﻿
+$arrow-left-icon: '../images/arrow-left.svg';
+$arrow-right-icon: '../images/arrow-right.svg';
+$more-vertical-icon: '../images/more-vertical.svg';
+
+.icon {
+	background-position: center center;
+	background-repeat:  no-repeat;
+}
+
+.arrow-left-icon { background-image: url($arrow-left-icon); }
+.arrow-right-icon { background-image: url($arrow-right-icon); }
+.more-vertical-icon { background-image: url($more-vertical-icon); }

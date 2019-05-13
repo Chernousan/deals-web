@@ -19,6 +19,8 @@ export function login() {
 
 export function application() {
 	UB.i18nExtend({
-		security_new_events_caption: 'новых событий'
+		menu_title_myTask: 'Мої задачі',
+		menu_approval_button: 'Підписати',
+		menu_reject_button: 'Відхилити'
 	});
 }

@@ -1,14 +1,16 @@
 <template>
-  <div id="app">
+  <div id="main">
     <top-menu/>
 		<router-view :key="$route.fullPath"></router-view>
     <bottom-menu/>
   </div>
 </template>
 
-<script>
+<script lang="js">
 import Top from './top-menu.vue';
 import Bottom from './bottom-menu.vue';
+	import '../../assets/styles/styles.scss';
+
 export default {
   name: 'main-layout',
   components: {
@@ -17,3 +19,5 @@ export default {
   }
 }
 </script>
+<style>
+</style>

@@ -8,7 +8,11 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@unitybase/ub": "^5.2.12",
+    "@unitybase/ub-pub": "^5.2.36",
     "core-js": "^2.6.5",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vuex": "^3.1.1"

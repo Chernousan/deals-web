@@ -2,14 +2,18 @@ import Vue from 'vue';
 import Shell from './layout';
 import router from './router';
 import store from './store';
-import Vuex from 'vuex';
+import locale from './locale';
+import ub from './vue-ub';
 
-Vue.use(Vuex);
+locale.initLogin();
+localStorage.setItem('dealsLang', 'uk');
+locale.uk();
 
 Vue.config.productionTip = false;
+Vue.use(ub);
 
 new Vue({
   router,
-  store: new Vuex.Store(store),
+  store,
   render: h => h(Shell)
 }).$mount('#app');

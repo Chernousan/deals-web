@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from '../store';
 import MainLayout from '../layout/main';
 import LoginLayout from '../layout/login';
 import Task from '../components/task';
@@ -19,7 +20,14 @@ const router = new Router({
 			redirect: 'task',
 			children: [{
 				path: 'task',
-				component: Task
+				component: Task,
+				meta: {
+					showTopMenu: true,
+					backLink: '/task',
+					//menuTitle: 'menu_title_myTask',
+					approvalButton: true,
+					moreButton: true
+				}
 			},{
 				path: 'task/sign',
 				component: Sign
@@ -40,6 +48,11 @@ const router = new Router({
 	],
 	linkActiveClass: 'active',
 	linkExactActiveClass: 'active'
+});
+
+router.beforeEach((to, from, next) => {
+	store.commit('navigation/setState', to);
+	next();
 });
 
 export default router;
