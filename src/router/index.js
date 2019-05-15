@@ -7,6 +7,7 @@ import Task from '../components/task';
 import Deal from '../components/deal';
 import Sign from '../components/sign';
 import Detail from '../components/detail';
+import { topMenu, bottomMenu } from '../config/menu-config';
 
 
 Vue.use(Router);
@@ -21,25 +22,31 @@ const router = new Router({
 			children: [{
 				path: 'task',
 				component: Task,
-				meta: {
-					showTopMenu: true,
-					backLink: '/task',
-					//menuTitle: 'menu_title_myTask',
-					approvalButton: true,
-					moreButton: true
-				}
+				meta:  Object.assign(topMenu.task, bottomMenu.task)
 			},{
 				path: 'task/sign',
-				component: Sign
+				component: Sign,
+				meta: Object.assign(topMenu['task/sign'], bottomMenu['task/sign'])
 			},{
 				path: 'task/detail',
-				component: Detail
+				component: Detail,
+				meta: Object.assign(topMenu['task/detail'], bottomMenu['task/detail'])
 			},{
 				path: 'deal',
-				component: Deal
+				component: Deal,
+				meta: Object.assign(topMenu.deal, bottomMenu.deal)
 			},{
-				path: 'deal/detail',
-				component: Detail
+				path: 'invite',
+				component: Detail,
+				meta: Object.assign(topMenu.invite, bottomMenu.invite)
+			},{
+				path: 'file',
+				component: Detail,
+				meta: Object.assign(topMenu.file, bottomMenu.file)
+			},{
+				path: 'archive',
+				component: Detail,
+				meta: Object.assign(topMenu.archive, bottomMenu.archive)
 			}]
 		},{
 			path: '/login',

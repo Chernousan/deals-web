@@ -3,10 +3,17 @@ export default {
   state: () => ({
     isLoading: true,
 		showTopMenu: false,
-		backLink: null,
-    menuTitle: null,
-		approvalButton: false,
-		moreButton: false
+		topMenuBackLink: false,
+    topMenuTitle: false,
+		topMenuApprovalButton: false,
+		topMenuMoreButton: false,
+		showBottomMenu: false,
+		bottomMenuEditButton: false,
+		bottomMenuBigButton: false,
+		bottomMenuFindButton: false,
+		userName: "Petro Bamper",
+		userOrganisation: "YouTube"
+
   }),
 	mutations: {
 		value(state, payload) {
@@ -15,10 +22,14 @@ export default {
 		},
 		setState(state, route) {
 			state.showTopMenu = route.meta.showTopMenu;
-			state.backLink = route.meta.backLink;
-			state.menuTitle = route.meta.menuTitle;
-			state.approvalButton = route.meta.approvalButton;
-			state.moreButton = route.meta.moreButton;
+			state.topMenuBackLink = route.meta.topMenuBackLink;
+			state.topMenuTitle = route.meta.topMenuTitle;
+			state.topMenuApprovalButton = route.meta.topMenuApprovalButton;
+			state.topMenuMoreButton = route.meta.topMenuMoreButton;
+			state.showBottomMenu = route.meta.showBottomMenu;
+      state.bottomMenuEditButton = route.meta.bottomMenuEditButton;
+      state.bottomMenuBigButton = route.meta.bottomMenuBigButton;
+      state.bottomMenuFindButton = route.meta.bottomMenuFindButton;
 		}
 	}
 };

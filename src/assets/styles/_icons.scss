@@ -2,6 +2,25 @@
 $arrow-left-icon: '../images/arrow-left.svg';
 $arrow-right-icon: '../images/arrow-right.svg';
 $more-vertical-icon: '../images/more-vertical.svg';
+$menu-hamburger-icon: '../images/menu-hamburger.svg';
+$menu-delete-icon: '../images/menu-delete.svg';
+$menu-download-icon: '../images/menu-download.svg';
+$menu-enable-icon: '../images/menu-enable.svg';
+$menu-edit-icon: '../images/menu-edit.svg';
+$menu-find-icon: '../images/menu-find.svg';
+$menu-deal-selected-icon: '../images/menu-deal-selected.svg';
+$menu-deal-icon: '../images/menu-deal.svg';
+$menu-task-selected-icon: '../images/menu-task-selected.svg';
+$menu-task-icon: '../images/menu-task.svg';
+$menu-invite-selected-icon: '../images/menu-invite-selected.svg';
+$menu-invite-icon: '../images/menu-invite.svg';
+$menu-file-selected-icon: '../images/menu-file-selected.svg';
+$menu-file-icon: '../images/menu-file.svg';
+$menu-archive-selected-icon: '../images/menu-archive-selected.svg';
+$menu-archive-icon: '../images/menu-archive.svg';
+$menu-budge-icon: '../images/menu-budge.svg';
+$menu-anonym-icon: '../images/menu-anonym.svg';
+$menu-logout-icon: '../images/menu-logout.svg';
 
 .icon {
 	background-position: center center;
@@ -11,3 +30,25 @@ $more-vertical-icon: '../images/more-vertical.svg';
 .arrow-left-icon { background-image: url($arrow-left-icon); }
 .arrow-right-icon { background-image: url($arrow-right-icon); }
 .more-vertical-icon { background-image: url($more-vertical-icon); }
+.menu-hamburger-icon { background-image: url($menu-hamburger-icon); }
+.menu-delete-icon { background-image: url($menu-delete-icon); }
+.menu-download-icon { background-image: url($menu-download-icon); }
+.menu-enable-icon { background-image: url($menu-enable-icon); }
+.menu-edit-icon { background-image: url($menu-edit-icon); }
+.menu-find-icon { background-image: url($menu-find-icon); }
+.menu-deal-icon { background-image: url($menu-deal-icon); }
+.menu-task-icon { background-image: url($menu-task-icon); }
+.menu-invite-icon { background-image: url($menu-invite-icon); }
+.menu-file-icon { background-image: url($menu-file-icon); }
+.menu-archive-icon { background-image: url($menu-archive-icon); }
+.menu-budge-icon { background-image: url($menu-budge-icon); }
+.menu-anonym-icon { background-image: url($menu-anonym-icon); }
+.menu-logout-icon { background-image: url($menu-logout-icon); }
+
+.active {
+	>.menu-deal-icon { background-image: url($menu-deal-selected-icon); }
+	>.menu-task-icon { background-image: url($menu-task-selected-icon); }
+	>.menu-invite-icon { background-image: url($menu-invite-selected-icon); }
+	>.menu-file-icon { background-image: url($menu-file-selected-icon); }
+	>.menu-archive-icon { background-image: url($menu-archive-selected-icon); }
+}

@@ -20,7 +20,13 @@ export function login() {
 export function application() {
 	UB.i18nExtend({
 		menu_title_myTask: 'Мої задачі',
+		menu_title_myDeal: 'Мої угоди',
 		menu_approval_button: 'Підписати',
-		menu_reject_button: 'Відхилити'
+		menu_reject_button: 'Відхилити',
+		bottom_menu_title_myTask: 'Мої задачі',
+		bottom_menu_title_myDeal: 'Угоди',
+		bottom_menu_title_myInvite: 'Запрошення',
+		bottom_menu_title_myFile: 'Файли',
+		bottom_menu_title_myArchive: 'Архів',
 	});
 }

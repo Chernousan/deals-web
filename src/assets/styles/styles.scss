@@ -1,1 +1,139 @@
 @import "_icons";
+
+//icon-link
+.icon-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  .icon {
+      width: 24px;
+      height: 24px;
+  }
+  .big-button {
+    width: 56px;
+    height: 56px;
+  }
+  .float{
+  	border-radius:56px;
+  	box-shadow: 2px 3px 4px #999;
+  }
+}
+
+//icon-align
+.align-left{
+  margin-left: 16px;
+  margin-right: auto;
+}
+.align-right{
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+//main-layout
+.router-conteiner{
+    display: block;
+    position: absolute;
+    top: 56px;
+    width: 100%;
+    margin: auto;
+}
+
+//top-menu
+.top-menu {
+    position: fixed;
+    max-width: 990px;
+    width:100%;
+    min-width: 360px;
+		display: flex;
+		align-items: center;
+		height: 56px;
+
+    .menu-title{
+      font-family: sans-serif;
+      font-size: 20px;
+      margin-left: 16px;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 0.3px;
+      color: rgba(0, 0, 0, 0.87);
+    }
+    .approval-button{
+      .right{
+        border-bottom-right-radius: 12px;
+        border-top-right-radius: 12px;
+        width: 96px;
+        height: 24px;
+        border: solid 1px;
+        background-color: #4a90e2;
+        border-color: #4a90e2;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        font-family: sans-serif;
+        line-height: 1.67;
+        letter-spacing: 0.2px;
+        text-align: center;
+      }
+      .left{
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 12px;
+        width: 96px;
+        height: 24px;
+        border: solid 1px;
+        background-color: transparent;
+        border-color: #e04140;
+        color: #e04140;
+        font-size: 12px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        font-family: sans-serif;
+        line-height: 1.67;
+        letter-spacing: 0.2px;
+        text-align: center;
+      }
+    }
+    button:focus {
+        outline:0;
+    }
+    button:active {
+        transform: scale(0.9);
+    }
+}
+
+
+
+//bottom-menu
+.bottom-menu {
+  max-width: 990px;
+  width:100%;
+  min-width: 360px;
+  &.container {
+    position: fixed;
+    bottom: 0px;
+  }
+  .align-menu-icon {
+    margin-left: 16px;
+    margin-right: 8px;
+  }
+  .set-big-button-icon{
+    position: relative;
+    bottom: 28px;
+    margin-left: auto;
+    margin-right: 16px;
+    background-color: white;
+    border-color: transparent;
+    color: transparent;
+    border-width: 0px;
+  }
+  button:focus {
+      outline:0;
+  }
+  button:active {
+      transform: scale(0.9);
+  }
+
+
+}

@@ -24,18 +24,22 @@ export default {
 
 <style>
 .loader {
-  background-color: #63ab97;
-  bottom: 0;
-  color: white;
-  display: block;
-  font-size: 32px;
-  left: 0;
-  overflow: hidden;
-  padding-top: 10vh;
-  position: fixed;
-  right: 0;
-  text-align: center;
+  position: absolute;
   top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  display: flex;
+  overflow: auto;
+  background-color: #4A90E2;
+  color: white;
+  font-size: 32px;
+  overflow: hidden;
+  padding-top: 50%;
+  justify-content: center;
+  text-align: center;
+
 }
 
 .fadeout {

@@ -33,12 +33,16 @@ export default {
   bottom: 0;
   right: 0;
   padding: 0;
+  display: flex;
   overflow: auto;
 }
 .layout{
   position: relative;
     margin: auto;
-    width: 360px;
+    display: flex;
+    max-width: 990px;
+    width:100%;
+    min-width: 360px;
     height: 100%;
 }
 </style>
