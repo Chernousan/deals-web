@@ -1,15 +1,13 @@
 <template>
   <div class="container bottom-menu"
         v-bind:class="{'bottom-menu-small': !halfMenu,
-                       'modal-mask': halfMenu && !fullMenu,
-                       'bottom-menu-full': fullMenu}"
+                       'modal-mask': halfMenu}"
         v-touch:swipe="swipeUpDown"
         v-show="showBottomMenu"
-        @click="closeMenu"
-        >
+        @click="menuOpenClose">
 
     <div v-if="!halfMenu" class="icon-link" @click.stop>
-      <div class="icon menu-hamburger-icon align-menu-icon" v-on:click="closeMenu"></div>
+      <div class="icon menu-hamburger-icon align-menu-icon" v-on:click="menuOpenClose"></div>
       <div class="icon-link" v-if="bottomMenuEditButton">
         <div class="icon menu-download-icon align-menu-icon"></div>
         <div class="icon menu-edit-icon align-menu-icon"></div>
@@ -21,8 +19,9 @@
       </div>
     </div>
 
-
-    <div v-show="halfMenu"  v-bind:class="{'bottom-menu-half': halfMenu && !fullMenu}" @click.stop >
+<!-- <transition name="slide-fade"> -->
+  <transition >
+    <div v-show="halfMenu"  v-bind:class="{'bottom-menu-half': halfMenu}" @click.stop >
       <div class="modal-content" >
         <div  class="bottom-menu-modal-header icon-link ">
            <div class="menu-anonym-icon  set-big-icon"></div>
@@ -39,7 +38,7 @@
 
         <div  class="bottom-menu-modal-body">
           <nav>
-            <div class="content-block" v-on:click="closeMenu" >
+            <div class="content-block" v-on:click="menuOpenClose" >
                <router-link to="/deal" class="icon-link content-block-button">
                  <div class="icon menu-deal-icon align-bottom-menu-icon"></div>
                  <div class="content-block-button-text">
@@ -48,7 +47,7 @@
                  <div class="icon menu-budge-icon align-bottom-menu-icon-right"></div>
                </router-link>
             </div>
-            <div class="content-block" v-on:click="closeMenu">
+            <div class="content-block" v-on:click="menuOpenClose">
                <router-link to="/task" class="icon-link content-block-button">
                  <div class="icon menu-task-icon align-bottom-menu-icon"></div>
                  <div class="content-block-button-text">
@@ -57,7 +56,7 @@
                 <div class="icon menu-budge-icon align-bottom-menu-icon-right"></div>
                </router-link>
             </div>
-            <div class="content-block" v-on:click="closeMenu">
+            <div class="content-block" v-on:click="menuOpenClose">
               <router-link to="/invite" class="icon-link content-block-button">
                 <div class="icon menu-invite-icon align-bottom-menu-icon"></div>
                 <div class="content-block-button-text">
@@ -65,7 +64,7 @@
                 </div>
               </router-link>
             </div>
-            <div class="content-block" v-on:click="closeMenu">
+            <div class="content-block" v-on:click="menuOpenClose">
               <router-link to="/file" class="icon-link content-block-button">
                 <div class="icon menu-file-icon align-bottom-menu-icon"></div>
                 <div class="content-block-button-text">
@@ -73,7 +72,7 @@
                 </div>
               </router-link>
             </div>
-            <div class="content-block" v-on:click="closeMenu">
+            <div class="content-block" v-on:click="menuOpenClose">
                <router-link to="/archive" class="icon-link content-block-button">
                   <div class="icon menu-archive-icon align-bottom-menu-icon"></div>
                   <div class="content-block-button-text">
@@ -81,10 +80,8 @@
                   </div>
                 </router-link>
             </div>
-
-            <div v-if="fullMenu">
               <div class="divider"></div>
-              <div class="content-block" v-on:click="closeMenu">
+              <div class="content-block" v-on:click="menuOpenClose">
                  <router-link to="/wallet" class="icon-link content-block-button">
                    <div class="icon menu-wallet-icon align-bottom-menu-icon"></div>
                    <div class="content-block-button-text">
@@ -92,7 +89,7 @@
                    </div>
                  </router-link>
               </div>
-              <div class="content-block" v-on:click="closeMenu">
+              <div class="content-block" v-on:click="menuOpenClose">
                 <router-link to="/settings" class="icon-link content-block-button">
                   <div class="icon menu-settings-icon align-bottom-menu-icon"></div>
                   <div class="content-block-button-text">
@@ -100,7 +97,7 @@
                   </div>
                 </router-link>
               </div>
-              <div class="content-block" v-on:click="closeMenu">
+              <div class="content-block" v-on:click="menuOpenClose">
                 <router-link to="/add_user" class="icon-link content-block-button">
                   <div class="icon menu-add-user-icon align-bottom-menu-icon"></div>
                   <div class="content-block-button-text">
@@ -108,7 +105,7 @@
                   </div>
                 </router-link>
               </div>
-              <div class="content-block" v-on:click="closeMenu">
+              <div class="content-block" v-on:click="menuOpenClose">
                  <router-link to="/support" class="icon-link content-block-button">
                     <div class="icon menu-support-icon align-bottom-menu-icon"></div>
                     <div class="content-block-button-text">
@@ -116,11 +113,11 @@
                     </div>
                   </router-link>
               </div>
-            </div>
           </nav>
         </div>
       </div>
-  </div>
+    </div>
+  </transition>
   </div>
 </template>
 
@@ -130,34 +127,18 @@ export default {
   name: 'bottom-menu',
   data: function(){
     return{
-      halfMenu: false,
-      fullMenu: false
+      halfMenu: false
     }
   },
   computed: {
     ...mapState('navigation', ['showBottomMenu', 'bottomMenuEditButton', 'bottomMenuBigButton', 'bottomMenuFindButton', 'userName', 'userOrganisation'])
   },
   methods: {
-    closeMenu: function(){
+    menuOpenClose: function(){
       this.halfMenu ? this.halfMenu = false : this.halfMenu = true;
-      this.fullMenu = false;
     },
     swipeUpDown: function(direction){
-
-      switch(direction) {
-        case 'top':
-          this.fullMenu = this.halfMenu;
-          this.halfMenu = true;
-        break;
-        case 'bottom':
-          this.halfMenu = this.fullMenu;
-          this.fullMenu = false;
-        break;
-        default:
-          this.halfMenu = false;
-          this.fullMenu = false;
-        break;
-      }
+      direction == "bottom" ? this.halfMenu = false : this.halfMenu = true;
     }
   }
 }
@@ -165,9 +146,19 @@ export default {
 
 <style lang="scss">
 
+.slide-fade-enter-active {
+  transition: all .2s ease;
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateY(320px);
+  opacity: 0;
+}
+
 .content-block-button-text{
   text-decoration: none;
 }
+
 .content-block-button{
   height: 40px;
   padding-top: 0px;
@@ -191,7 +182,7 @@ export default {
 }
 
 .modal-content{
-      display: block;
+    //  display: block;
       width: 100%;
       height: 100%;
       font-size: 14px;
@@ -209,10 +200,12 @@ export default {
 .bottom-menu-small{
   border-top: 2px solid #fafafa;
   height: 56px;
+  background: #FFF;
 }
+
 .bottom-menu-half {
   background-color: #fff;
-  height: 320px;
+  height: 490px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   width: 100%;
@@ -220,17 +213,13 @@ export default {
   bottom: 0px;
 }
 
-.bottom-menu-full {
-  height: 100%;
-  overflow: auto;
-}
 
 .modal-mask {
   border-top: 0px solid #fafafa;
   position: fixed;
   z-index: 9998;
   top: 0;
-  left: 0;
+  // left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .5);

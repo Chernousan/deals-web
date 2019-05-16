@@ -11,8 +11,8 @@ export default {
 		bottomMenuEditButton: false,
 		bottomMenuBigButton: false,
 		bottomMenuFindButton: false,
-		userName: "Petro Bamper",
-		userOrganisation: "YouTube"
+		userName: "Petro Petrenko",
+		userOrganisation: "Some Organisation"
 
   }),
 	mutations: {

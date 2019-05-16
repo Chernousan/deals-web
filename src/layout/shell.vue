@@ -2,7 +2,7 @@
   <div id="shell" class="shell">
     <div class="layout">
       <splash-layout/>
-      <div v-if="!isLoading">
+      <div class="layout-container" v-if="!isLoading">
         <router-view/>
       </div>
     </div>
@@ -33,16 +33,16 @@ export default {
   bottom: 0;
   right: 0;
   padding: 0;
-  display: flex;
-  overflow: auto;
 }
 .layout{
-  position: relative;
+    position: relative;
     margin: auto;
-    display: flex;
     max-width: 990px;
     width:100%;
     min-width: 360px;
     height: 100%;
+}
+.layout-container{
+  
 }
 </style>

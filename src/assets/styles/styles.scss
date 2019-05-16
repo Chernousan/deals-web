@@ -31,11 +31,13 @@
 
 //main-layout
 .router-conteiner{
-    display: block;
-    position: absolute;
-    top: 56px;
-    width: 100%;
-    margin: auto;
+  display: block;
+  position: fixed;
+  top: 56px;
+  bottom: 58px;
+  width: 100%;
+  margin: auto;
+  overflow-x: hidden;
 }
 
 //top-menu
@@ -47,6 +49,8 @@
 		display: flex;
 		align-items: center;
 		height: 56px;
+    background: #FFF;
+    z-index: 2;
 
     .menu-title{
       font-family: sans-serif;
@@ -112,7 +116,7 @@
   min-width: 360px;
 
   &.container {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
   }
   .align-menu-icon {
@@ -212,5 +216,5 @@
       text-decoration: none;
       color: #FFF;
   }
-  
+
 }
