@@ -47,6 +47,22 @@ const router = new Router({
 				path: 'archive',
 				component: Detail,
 				meta: Object.assign(topMenu.archive, bottomMenu.archive)
+			},{
+				path: 'wallet',
+				component: Detail,
+				meta: Object.assign(topMenu.wallet, bottomMenu.wallet)
+			},{
+				path: 'settings',
+				component: Detail,
+				meta: Object.assign(topMenu.settings, bottomMenu.settings)
+			},{
+				path: 'add_user',
+				component: Detail,
+				meta: Object.assign(topMenu.add_user, bottomMenu.add_user)
+			},{
+				path: 'support',
+				component: Detail,
+				meta: Object.assign(topMenu.support, bottomMenu.support)
 			}]
 		},{
 			path: '/login',

@@ -21,6 +21,14 @@ $menu-archive-icon: '../images/menu-archive.svg';
 $menu-budge-icon: '../images/menu-budge.svg';
 $menu-anonym-icon: '../images/menu-anonym.svg';
 $menu-logout-icon: '../images/menu-logout.svg';
+$menu-wallet-icon: '../images/menu-wallet.svg';
+$menu-wallet-selected-icon: '../images/menu-wallet-selected.svg';
+$menu-settings-icon: '../images/menu-settings.svg';
+$menu-settings-selected-icon: '../images/menu-settings-selected.svg';
+$menu-add-user-icon: '../images/menu-add-user.svg';
+$menu-add-user-selected-icon: '../images/menu-add-user-selected.svg';
+$menu-support-icon: '../images/menu-support.svg';
+$menu-support-selected-icon: '../images/menu-support-selected.svg';
 
 .icon {
 	background-position: center center;
@@ -44,6 +52,10 @@ $menu-logout-icon: '../images/menu-logout.svg';
 .menu-budge-icon { background-image: url($menu-budge-icon); }
 .menu-anonym-icon { background-image: url($menu-anonym-icon); }
 .menu-logout-icon { background-image: url($menu-logout-icon); }
+.menu-wallet-icon { background-image: url($menu-wallet-icon); }
+.menu-settings-icon { background-image: url($menu-settings-icon); }
+.menu-add-user-icon { background-image: url($menu-add-user-icon); }
+.menu-support-icon { background-image: url($menu-support-icon); }
 
 .active {
 	>.menu-deal-icon { background-image: url($menu-deal-selected-icon); }
@@ -51,4 +63,9 @@ $menu-logout-icon: '../images/menu-logout.svg';
 	>.menu-invite-icon { background-image: url($menu-invite-selected-icon); }
 	>.menu-file-icon { background-image: url($menu-file-selected-icon); }
 	>.menu-archive-icon { background-image: url($menu-archive-selected-icon); }
+	>.menu-wallet-icon { background-image: url($menu-wallet-selected-icon); }
+	>.menu-settings-icon { background-image: url($menu-settings-selected-icon); }
+	>.menu-add-user-icon { background-image: url($menu-add-user-selected-icon); }
+	>.menu-support-icon { background-image: url($menu-support-selected-icon); }
+
 }

@@ -28,6 +28,9 @@ export function application() {
 		bottom_menu_title_myInvite: 'Запрошення',
 		bottom_menu_title_myFile: 'Файли',
 		bottom_menu_title_myArchive: 'Архів',
-
+		bottom_menu_title_myWallet: 'Наявні ресурси',
+		bottom_menu_title_mySettings: 'Налаштування',
+		bottom_menu_title_myAddUser: 'Запросити нового користувача',
+		bottom_menu_title_mySupport: 'Технічна підтримка'
 	});
 }

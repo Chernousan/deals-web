@@ -62,6 +62,38 @@ export const topMenu =
       topMenuTitle: false,
       topMenuApprovalButton: true,
       topMenuMoreButton: true
+    },
+  'wallet':
+    {
+      showTopMenu: true,
+      topMenuBackLink: '/task',
+      topMenuTitle: false,
+      topMenuApprovalButton: true,
+      topMenuMoreButton: true
+    },
+  'settings':
+    {
+      showTopMenu: true,
+      topMenuBackLink: '/task',
+      topMenuTitle: false,
+      topMenuApprovalButton: true,
+      topMenuMoreButton: true
+    },
+  'add_user':
+    {
+      showTopMenu: true,
+      topMenuBackLink: '/task',
+      topMenuTitle: false,
+      topMenuApprovalButton: true,
+      topMenuMoreButton: true
+    },
+  'support':
+    {
+      showTopMenu: true,
+      topMenuBackLink: '/task',
+      topMenuTitle: false,
+      topMenuApprovalButton: true,
+      topMenuMoreButton: true
     }
 }
 export const bottomMenu =
@@ -108,6 +140,34 @@ export const bottomMenu =
       bottomMenuFindButton: false
     },
   'archive':
+    {
+      showBottomMenu: true,
+      bottomMenuEditButton: true,
+      bottomMenuBigButton: true,
+      bottomMenuFindButton: false
+    },
+  'wallet':
+    {
+      showBottomMenu: true,
+      bottomMenuEditButton: true,
+      bottomMenuBigButton: true,
+      bottomMenuFindButton: false
+    },
+  'settings':
+    {
+      showBottomMenu: true,
+      bottomMenuEditButton: true,
+      bottomMenuBigButton: true,
+      bottomMenuFindButton: false
+    },
+  'add_user':
+    {
+      showBottomMenu: true,
+      bottomMenuEditButton: true,
+      bottomMenuBigButton: true,
+      bottomMenuFindButton: false
+    },
+  'support':
     {
       showBottomMenu: true,
       bottomMenuEditButton: true,

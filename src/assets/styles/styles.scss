@@ -110,8 +110,9 @@
   max-width: 990px;
   width:100%;
   min-width: 360px;
+
   &.container {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
   }
   .align-menu-icon {
@@ -134,6 +135,82 @@
   button:active {
       transform: scale(0.9);
   }
+  .divider{
+      border-bottom: 2px solid #fafafa;
+  }
+
+  .bottom-top-menu-block-text{
+    margin-left: 16px;
+  }
 
 
+  .bottom-top-menu-block-text-user-name{
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    font-family: sans-serif;
+    line-height: normal;
+    letter-spacing: 0.3px;
+    color: rgba(0, 0, 0, 0.87);
+    padding-bottom: 2px;
+  }
+  .bottom-top-menu-block-text-organosation{
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: 0.3px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  .set-big-icon{
+    width: 48px;
+    height: 48px;
+    margin-left: 16px;
+  }
+  .content-block{
+    height: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .active, .content-block:hover {
+      background: #65a1fd;
+      border-radius: 8px;
+      height: 40px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      text-decoration: none;
+      color: #FFF;
+  }
+  .active, .content-block:hover {
+      background: #65a1fd;
+      border-radius: 8px;
+      height: 40px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      text-decoration: none;
+      color: #FFF;
+  }
+  .content-block:hover {
+      background: #FFF;
+      border-radius: 8px;
+      height: 40px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      text-decoration: none;
+      color: #FFF;
+  }
+  
 }

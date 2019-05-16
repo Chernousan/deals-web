@@ -4,10 +4,12 @@
                        'modal-mask': halfMenu && !fullMenu,
                        'bottom-menu-full': fullMenu}"
         v-touch:swipe="swipeUpDown"
-        v-show="showBottomMenu">
+        v-show="showBottomMenu"
+        @click="closeMenu"
+        >
 
-    <div v-if="!halfMenu" class="icon-link">
-      <div class="icon menu-hamburger-icon align-menu-icon" v-on:click="halfMenu ? halfMenu = false : halfMenu = true"></div>
+    <div v-if="!halfMenu" class="icon-link" @click.stop>
+      <div class="icon menu-hamburger-icon align-menu-icon" v-on:click="closeMenu"></div>
       <div class="icon-link" v-if="bottomMenuEditButton">
         <div class="icon menu-download-icon align-menu-icon"></div>
         <div class="icon menu-edit-icon align-menu-icon"></div>
@@ -19,8 +21,9 @@
       </div>
     </div>
 
-    <div v-if="halfMenu && !fullMenu"  v-bind:class="{'bottom-menu-half': halfMenu && !fullMenu}">
-      <div class="modal-content">
+
+    <div v-show="halfMenu"  v-bind:class="{'bottom-menu-half': halfMenu && !fullMenu}" @click.stop >
+      <div class="modal-content" >
         <div  class="bottom-menu-modal-header icon-link ">
            <div class="menu-anonym-icon  set-big-icon"></div>
            <div class="bottom-top-menu-block-text">
@@ -36,7 +39,7 @@
 
         <div  class="bottom-menu-modal-body">
           <nav>
-            <div class="content-block" v-on:click="halfMenu ? halfMenu = false : halfMenu = true" >
+            <div class="content-block" v-on:click="closeMenu" >
                <router-link to="/deal" class="icon-link content-block-button">
                  <div class="icon menu-deal-icon align-bottom-menu-icon"></div>
                  <div class="content-block-button-text">
@@ -45,7 +48,7 @@
                  <div class="icon menu-budge-icon align-bottom-menu-icon-right"></div>
                </router-link>
             </div>
-            <div class="content-block" v-on:click="halfMenu ? halfMenu = false : halfMenu = true">
+            <div class="content-block" v-on:click="closeMenu">
                <router-link to="/task" class="icon-link content-block-button">
                  <div class="icon menu-task-icon align-bottom-menu-icon"></div>
                  <div class="content-block-button-text">
@@ -54,7 +57,7 @@
                 <div class="icon menu-budge-icon align-bottom-menu-icon-right"></div>
                </router-link>
             </div>
-            <div class="content-block" v-on:click="halfMenu ? halfMenu = false : halfMenu = true">
+            <div class="content-block" v-on:click="closeMenu">
               <router-link to="/invite" class="icon-link content-block-button">
                 <div class="icon menu-invite-icon align-bottom-menu-icon"></div>
                 <div class="content-block-button-text">
@@ -62,7 +65,7 @@
                 </div>
               </router-link>
             </div>
-            <div class="content-block" v-on:click="halfMenu ? halfMenu = false : halfMenu = true">
+            <div class="content-block" v-on:click="closeMenu">
               <router-link to="/file" class="icon-link content-block-button">
                 <div class="icon menu-file-icon align-bottom-menu-icon"></div>
                 <div class="content-block-button-text">
@@ -70,7 +73,7 @@
                 </div>
               </router-link>
             </div>
-            <div class="content-block" v-on:click="halfMenu ? halfMenu = false : halfMenu = true">
+            <div class="content-block" v-on:click="closeMenu">
                <router-link to="/archive" class="icon-link content-block-button">
                   <div class="icon menu-archive-icon align-bottom-menu-icon"></div>
                   <div class="content-block-button-text">
@@ -78,14 +81,46 @@
                   </div>
                 </router-link>
             </div>
+
+            <div v-if="fullMenu">
+              <div class="divider"></div>
+              <div class="content-block" v-on:click="closeMenu">
+                 <router-link to="/wallet" class="icon-link content-block-button">
+                   <div class="icon menu-wallet-icon align-bottom-menu-icon"></div>
+                   <div class="content-block-button-text">
+                     {{$ub.i18n('bottom_menu_title_myWallet')}}
+                   </div>
+                 </router-link>
+              </div>
+              <div class="content-block" v-on:click="closeMenu">
+                <router-link to="/settings" class="icon-link content-block-button">
+                  <div class="icon menu-settings-icon align-bottom-menu-icon"></div>
+                  <div class="content-block-button-text">
+                    {{$ub.i18n('bottom_menu_title_mySettings')}}
+                  </div>
+                </router-link>
+              </div>
+              <div class="content-block" v-on:click="closeMenu">
+                <router-link to="/add_user" class="icon-link content-block-button">
+                  <div class="icon menu-add-user-icon align-bottom-menu-icon"></div>
+                  <div class="content-block-button-text">
+                    {{$ub.i18n('bottom_menu_title_myAddUser')}}
+                  </div>
+                </router-link>
+              </div>
+              <div class="content-block" v-on:click="closeMenu">
+                 <router-link to="/support" class="icon-link content-block-button">
+                    <div class="icon menu-support-icon align-bottom-menu-icon"></div>
+                    <div class="content-block-button-text">
+                      {{$ub.i18n('bottom_menu_title_mySupport')}}
+                    </div>
+                  </router-link>
+              </div>
+            </div>
           </nav>
         </div>
       </div>
-    </div>
-
-    <div v-if="fullMenu" class="icon-link ">
-
-    </div>
+  </div>
   </div>
 </template>
 
@@ -103,7 +138,12 @@ export default {
     ...mapState('navigation', ['showBottomMenu', 'bottomMenuEditButton', 'bottomMenuBigButton', 'bottomMenuFindButton', 'userName', 'userOrganisation'])
   },
   methods: {
+    closeMenu: function(){
+      this.halfMenu ? this.halfMenu = false : this.halfMenu = true;
+      this.fullMenu = false;
+    },
     swipeUpDown: function(direction){
+
       switch(direction) {
         case 'top':
           this.fullMenu = this.halfMenu;
@@ -124,34 +164,7 @@ export default {
 </script>
 
 <style lang="scss">
-.bottom-top-menu-block-text{
-  margin-left: 16px;
-}
-.bottom-top-menu-block-text-user-name{
-  font-size: 20px;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: 0.3px;
-  color: rgba(0, 0, 0, 0.87);
-  padding-bottom: 2px;
-}
-.bottom-top-menu-block-text-organosation{
-  font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.43;
-  letter-spacing: 0.3px;
-  color: rgba(0, 0, 0, 0.87);
-}
 
-.set-big-icon{
-  width: 48px;
-  height: 48px;
-  margin-left: 16px;
-}
 .content-block-button-text{
   text-decoration: none;
 }
@@ -174,28 +187,7 @@ export default {
 .bottom-menu-modal-body{
     height: 100%;
     padding-top: 4px;
-    height: 316px;
-    margin-right: 8px;
-    margin-left: 8px;
-}
-
-.content-block{
-  height: 40px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-.active, .content-block:hover {
-    background: #65a1fd;
-    border-radius: 8px;
-    height: 40px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    text-decoration: none;
-    color: #FFF;
+    height: 236px;
 }
 
 .modal-content{
@@ -208,6 +200,10 @@ export default {
       font-stretch: normal;
       line-height: normal;
       letter-spacing: normal;
+      font-family: sans-serif;
+      background: #FFF;
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
 }
 
 .bottom-menu-small{
@@ -220,12 +216,13 @@ export default {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   width: 100%;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
 }
 
 .bottom-menu-full {
   height: 100%;
+  overflow: auto;
 }
 
 .modal-mask {
@@ -248,6 +245,5 @@ export default {
   margin-left: auto;
   margin-right: 8px;
 }
-
 
 </style>
