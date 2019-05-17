@@ -11,6 +11,8 @@ export default {
 		bottomMenuEditButton: false,
 		bottomMenuBigButton: false,
 		bottomMenuFindButton: false,
+		newTask: 0,
+		newDeal: 1,
 		userName: "Petro Petrenko",
 		userOrganisation: "Some Organisation"
 

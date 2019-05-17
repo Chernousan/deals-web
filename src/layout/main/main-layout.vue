@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="main-layout">
     <top-menu/>
     <router-view  class="router-conteiner" :key="$route.fullPath"></router-view>
     <bottom-menu/>
@@ -19,5 +19,3 @@ export default {
   }
 }
 </script>
-<style>
-</style>

@@ -1,238 +1,71 @@
 <template>
-  <div class="container bottom-menu"
-        v-bind:class="{'bottom-menu-small': !halfMenu,
-                       'modal-mask': halfMenu}"
-        v-touch:swipe="swipeUpDown"
-        v-show="showBottomMenu"
-        @click="menuOpenClose">
-
-    <div v-if="!halfMenu" class="icon-link" @click.stop>
-      <div class="icon menu-hamburger-icon align-menu-icon" v-on:click="menuOpenClose"></div>
+  <div class="bottom-menu" v-bind:class="{'modal-mask': showFullMenu}" v-touch:swipe="swipeUpDown" v-show="showBottomMenu" @click="menuOpenClose">
+    <div v-if="!showFullMenu" class="bottom-menu-small icon-link" @click.stop>
+      <div class="icon menu-hamburger-icon align-menu-icon" v-on:click="menuOpenClose"/>
       <div class="icon-link" v-if="bottomMenuEditButton">
-        <div class="icon menu-download-icon align-menu-icon"></div>
-        <div class="icon menu-edit-icon align-menu-icon"></div>
-        <div class="icon menu-delete-icon align-menu-icon"></div>
+        <div class="icon menu-download-icon align-menu-icon"/>
+        <div class="icon menu-edit-icon align-menu-icon"/>
+        <div class="icon menu-delete-icon align-menu-icon"/>
       </div>
       <button  class="big-button menu-enable-icon set-big-button-icon float" v-if="bottomMenuBigButton"></button>
       <div class="icon-link  align-right" v-if="bottomMenuFindButton">
-        <div class="icon menu-find-icon"></div>
+        <div class="icon menu-find-icon"/>
       </div>
     </div>
-
-<!-- <transition name="slide-fade"> -->
-  <transition >
-    <div v-show="halfMenu"  v-bind:class="{'bottom-menu-half': halfMenu}" @click.stop >
-      <div class="modal-content" >
-        <div  class="bottom-menu-modal-header icon-link ">
-           <div class="menu-anonym-icon  set-big-icon"></div>
-           <div class="bottom-top-menu-block-text">
-             <div class="bottom-top-menu-block-text-user-name">
-                 {{$ub.i18n(userName)}}
+    <transition name="slide-fade">
+      <div v-if="showFullMenu"  v-bind:class="{'bottom-menu-full': showFullMenu}" @click.stop >
+        <div class="modal-content" >
+          <div  class="bottom-menu-modal-header icon-link ">
+             <div class="menu-anonym-icon  set-big-icon"></div>
+             <div class="bottom-top-menu-block-text">
+               <div class="bottom-top-menu-block-text-user-name">{{$ub.i18n(userName)}}</div>
+               <div class="bottom-top-menu-block-text-organosation">{{$ub.i18n(userOrganisation)}}</div>
              </div>
-             <div class="bottom-top-menu-block-text-organosation">
-               {{$ub.i18n(userOrganisation)}}
-             </div>
-           </div>
-            <router-link to="/login" class="icon menu-logout-icon  align-right"></router-link>
-        </div>
-
-        <div  class="bottom-menu-modal-body">
-          <nav>
-            <div class="content-block" v-on:click="menuOpenClose" >
-               <router-link to="/deal" class="icon-link content-block-button">
-                 <div class="icon menu-deal-icon align-bottom-menu-icon"></div>
-                 <div class="content-block-button-text">
-                   {{$ub.i18n('bottom_menu_title_myDeal')}}
-                 </div>
-                 <div class="icon menu-budge-icon align-bottom-menu-icon-right"></div>
-               </router-link>
-            </div>
-            <div class="content-block" v-on:click="menuOpenClose">
-               <router-link to="/task" class="icon-link content-block-button">
-                 <div class="icon menu-task-icon align-bottom-menu-icon"></div>
-                 <div class="content-block-button-text">
-                   {{$ub.i18n('bottom_menu_title_myTask')}}
-                 </div>
-                <div class="icon menu-budge-icon align-bottom-menu-icon-right"></div>
-               </router-link>
-            </div>
-            <div class="content-block" v-on:click="menuOpenClose">
-              <router-link to="/invite" class="icon-link content-block-button">
-                <div class="icon menu-invite-icon align-bottom-menu-icon"></div>
-                <div class="content-block-button-text">
-                  {{$ub.i18n('bottom_menu_title_myInvite')}}
-                </div>
-              </router-link>
-            </div>
-            <div class="content-block" v-on:click="menuOpenClose">
-              <router-link to="/file" class="icon-link content-block-button">
-                <div class="icon menu-file-icon align-bottom-menu-icon"></div>
-                <div class="content-block-button-text">
-                  {{$ub.i18n('bottom_menu_title_myFile')}}
-                </div>
-              </router-link>
-            </div>
-            <div class="content-block" v-on:click="menuOpenClose">
-               <router-link to="/archive" class="icon-link content-block-button">
-                  <div class="icon menu-archive-icon align-bottom-menu-icon"></div>
-                  <div class="content-block-button-text">
-                    {{$ub.i18n('bottom_menu_title_myArchive')}}
-                  </div>
-                </router-link>
-            </div>
-              <div class="divider"></div>
-              <div class="content-block" v-on:click="menuOpenClose">
-                 <router-link to="/wallet" class="icon-link content-block-button">
-                   <div class="icon menu-wallet-icon align-bottom-menu-icon"></div>
-                   <div class="content-block-button-text">
-                     {{$ub.i18n('bottom_menu_title_myWallet')}}
-                   </div>
-                 </router-link>
-              </div>
-              <div class="content-block" v-on:click="menuOpenClose">
-                <router-link to="/settings" class="icon-link content-block-button">
-                  <div class="icon menu-settings-icon align-bottom-menu-icon"></div>
-                  <div class="content-block-button-text">
-                    {{$ub.i18n('bottom_menu_title_mySettings')}}
-                  </div>
-                </router-link>
-              </div>
-              <div class="content-block" v-on:click="menuOpenClose">
-                <router-link to="/add_user" class="icon-link content-block-button">
-                  <div class="icon menu-add-user-icon align-bottom-menu-icon"></div>
-                  <div class="content-block-button-text">
-                    {{$ub.i18n('bottom_menu_title_myAddUser')}}
-                  </div>
-                </router-link>
-              </div>
-              <div class="content-block" v-on:click="menuOpenClose">
-                 <router-link to="/support" class="icon-link content-block-button">
-                    <div class="icon menu-support-icon align-bottom-menu-icon"></div>
-                    <div class="content-block-button-text">
-                      {{$ub.i18n('bottom_menu_title_mySupport')}}
-                    </div>
-                  </router-link>
-              </div>
-          </nav>
+              <router-link to="/login" class="icon menu-logout-icon  align-right"></router-link>
+          </div>
+          <div  class="bottom-menu-modal-body">
+            <nav  v-on:click="menuOpenClose">
+              <menu-button icon="icon menu-deal-icon align-bottom-menu-icon" label="bottom_menu_title_myDeal" :budgeValue="newDeal" route="/deal"/>
+              <menu-button icon="icon menu-task-icon align-bottom-menu-icon" label="bottom_menu_title_myTask" :budgeValue="newTask" route="/task"/>
+              <menu-button icon="icon menu-invite-icon align-bottom-menu-icon" label="bottom_menu_title_myInvite" route="/invite"/>
+              <menu-button icon="icon menu-file-icon align-bottom-menu-icon" label="bottom_menu_title_myFile" route="/file"/>
+              <menu-button icon="icon menu-archive-icon align-bottom-menu-icon" label="bottom_menu_title_myArchive" route="/archive"/>
+              <div class="divider"/>
+              <menu-button icon="icon menu-wallet-icon align-bottom-menu-icon" label="bottom_menu_title_myWallet" route="/wallet"/>
+              <menu-button icon="icon menu-settings-icon align-bottom-menu-icon" label="bottom_menu_title_mySettings" route="/settings"/>
+              <menu-button icon="icon menu-add-user-icon align-bottom-menu-icon" label="bottom_menu_title_myAddUser" route="/add_user"/>
+              <menu-button icon="icon menu-support-icon align-bottom-menu-icon" label="bottom_menu_title_mySupport" route="/support"/>
+            </nav>
+          </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex';
+import Button from '../../components/common/menu-button.vue';
 export default {
   name: 'bottom-menu',
+  components: {
+    'menu-button': Button
+  },
   data: function(){
     return{
-      halfMenu: false
+      showFullMenu: false
     }
   },
   computed: {
-    ...mapState('navigation', ['showBottomMenu', 'bottomMenuEditButton', 'bottomMenuBigButton', 'bottomMenuFindButton', 'userName', 'userOrganisation'])
+    ...mapState('navigation', ['showBottomMenu', 'bottomMenuEditButton', 'bottomMenuBigButton', 'bottomMenuFindButton', 'userName', 'userOrganisation','newTask', 'newDeal'])
   },
   methods: {
     menuOpenClose: function(){
-      this.halfMenu ? this.halfMenu = false : this.halfMenu = true;
+      this.showFullMenu ? this.showFullMenu = false : this.showFullMenu = true;
     },
     swipeUpDown: function(direction){
-      direction == "bottom" ? this.halfMenu = false : this.halfMenu = true;
+      direction == "bottom" ? this.showFullMenu = false : this.showFullMenu = true;
     }
   }
 }
 </script>
-
-<style lang="scss">
-
-.slide-fade-enter-active {
-  transition: all .2s ease;
-}
-
-.slide-fade-enter, .slide-fade-leave-to {
-  transform: translateY(320px);
-  opacity: 0;
-}
-
-.content-block-button-text{
-  text-decoration: none;
-}
-
-.content-block-button{
-  height: 40px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  display: contents;
-  text-decoration: none;
-  color: #9A9A9A;
-}
-.bottom-menu-modal-header{
-    height: 78px;
-    border-bottom: 2px solid #fafafa;
-    width: 100%;
-    top: 0px;
-}
-.bottom-menu-modal-body{
-    height: 100%;
-    padding-top: 4px;
-    height: 236px;
-}
-
-.modal-content{
-    //  display: block;
-      width: 100%;
-      height: 100%;
-      font-size: 14px;
-      font-weight: 500;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      font-family: sans-serif;
-      background: #FFF;
-      border-top-left-radius: inherit;
-      border-top-right-radius: inherit;
-}
-
-.bottom-menu-small{
-  border-top: 2px solid #fafafa;
-  height: 56px;
-  background: #FFF;
-}
-
-.bottom-menu-half {
-  background-color: #fff;
-  height: 490px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  width: 100%;
-  position: absolute;
-  bottom: 0px;
-}
-
-
-.modal-mask {
-  border-top: 0px solid #fafafa;
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  // left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: table;
-  transition: opacity .3s ease;
-}
-.align-bottom-menu-icon{
-  margin-left: 8px;
-  margin-right: 32px;
-}
-.align-bottom-menu-icon-right{
-  margin-left: auto;
-  margin-right: 8px;
-}
-
-</style>
