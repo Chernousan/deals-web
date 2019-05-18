@@ -1,45 +1,14 @@
 <template>
-  <div id="deal">
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-
-
-
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-  <p> Deal list</p>
-
-  </div>
+    <deal-item/>
 </template>
 
 <script>
-
+import DealItem from './deal-item.vue'
 
 export default {
-  name: 'deal'
+  name: 'deal',
+  components: {
+    'deal-item': DealItem
+  }
 }
 </script>
